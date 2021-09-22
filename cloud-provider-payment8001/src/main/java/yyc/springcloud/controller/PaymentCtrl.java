@@ -1,5 +1,6 @@
 package yyc.springcloud.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +11,14 @@ import yyc.springcloud.service.PaymentService;
 import javax.annotation.Resource;
 
 @RestController
+@Slf4j
 public class PaymentCtrl {
     @Resource
     PaymentService paymentService;
     @PostMapping("/payment/creat")
-    public CommonResult<Payment> creat(@RequestBody Payment payment){
+    public CommonResult<Payment> creat(@RequestBody  Payment payment){
+        log.info("payment:{}",payment.getId());
+        log.info("payment:{}",payment.getSerial());
         int result = paymentService.creat(payment);
         if(result >0 ){
             return new CommonResult(200,"success",null);

@@ -3,3 +3,11 @@ server:
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: yyc.springcloud.entities
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    url: jdbc:mysql://localhost:3316/yycaa?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: yycaa
+    driver-class-name: com.mysql.cj.jdbc.Driver
