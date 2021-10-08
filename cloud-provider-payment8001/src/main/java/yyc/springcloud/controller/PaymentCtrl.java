@@ -28,8 +28,11 @@ public class PaymentCtrl {
     }
     @GetMapping("/payment/get/{id}")
     public CommonResult<Payment> get(@PathVariable("id") Long id){
+        log.info("--------------------{}",id);
         Payment p = paymentService.getPaymentById(id);
+        log.info("+++++++++++++++"+p.toString());
         if(null != p){
+
             return new CommonResult<Payment>(200,"success",p);
         }else{
             return new CommonResult<Payment>(444,"ID :"+id+"get failed",null);
