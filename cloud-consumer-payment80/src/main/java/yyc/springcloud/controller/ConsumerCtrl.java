@@ -16,8 +16,8 @@ import javax.annotation.Resource;
 public class ConsumerCtrl {
     @Resource
     RestTemplate template;
-    //@Value("paymentServerUrl")
-    String paymentServerUrl="http://localhost:8001";
+    @Value("${serverUrl}")
+    String paymentServerUrl;
 
     @GetMapping("/consumer/payment/creat")
     public CommonResult<Payment> creat(Payment payment){
@@ -26,6 +26,7 @@ public class ConsumerCtrl {
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult getPayment(@PathVariable Long id)
     {
+
         return template.getForObject(paymentServerUrl + "/payment/get/"+id, CommonResult.class, id);
     }
 

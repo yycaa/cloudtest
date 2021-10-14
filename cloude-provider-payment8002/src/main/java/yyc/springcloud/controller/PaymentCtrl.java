@@ -1,9 +1,7 @@
 package yyc.springcloud.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import yyc.springcloud.entities.CommonResult;
 import yyc.springcloud.entities.Payment;
@@ -24,7 +22,7 @@ public class PaymentCtrl {
         log.info("payment:{}",payment.getSerial());
         int result = paymentService.creat(payment);
         if(result >0 ){
-            return new CommonResult(200,"success"+port,null);
+            return new CommonResult(200,"success8002"+port,null);
         }else{
             return new CommonResult<>(555,"payment ID :"+payment.getId()+"creat failed!",null);
         }
@@ -36,7 +34,7 @@ public class PaymentCtrl {
         log.info("+++++++++++++++"+p.toString());
         if(null != p){
 
-            return new CommonResult<Payment>(200,"success8001"+port,p);
+            return new CommonResult<Payment>(200,"success"+port,p);
         }else{
             return new CommonResult<Payment>(444,"ID :"+id+"get failed",null);
         }
